@@ -12,6 +12,11 @@ export const selectDebtsSelected = createSelector(
     selectedPages=>selectedPages.debtsPageSelected
 );
 
+export const selectExpensesSelected = createSelector(
+    [selectSelectedPages],
+    selectedPages=>selectedPages.expensesPageSelected
+);
+
 export const selectPageTitle = createSelector(
     [selectSelectedPages],
     selectSelectedPages=>selectSelectedPages.pageTitle

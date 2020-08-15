@@ -4,15 +4,16 @@ export const UtilityWindowContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 350px;
-  height: 390px;
-  border: 1px solid dimgrey;
+  height: 500px;
+  border: 1px solid #99C8CE;
   background-color: white;
   position: absolute;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 150px;
+  margin-top: 70px;
+  border-radius: 5px;
 `;
 
 export const UtilityFormContainer = styled.form`

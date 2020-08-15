@@ -42,4 +42,5 @@ export const UtilityIndexDayValue =  styled.div`
   align-self: center;
   text-align: center;
   margin-top: 10px;
+  font-family: 'Open Sans Condensed', sans-serif;
 `;

@@ -3,14 +3,14 @@ import {ReactComponent as Logo} from "./../../assets/engie.svg";
 
 export const UtilityContainer = styled.div`
   width: 400px;
-  height: 420px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   flex-flow: wrap;
   margin: 30px;
   box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   //border: 1px solid cadetblue;
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
 `;
 
 export const UtilityDetails = styled.div`
@@ -21,13 +21,14 @@ export const UtilityDetails = styled.div`
   background-color: #167D86;
   width: 100%;
   height: 60px;
-  border-radius: 10px;
+  border-radius: 5px 5px 0px 0px;
 `;
 
 export const UtilityCloseEdit = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: end;
+  font-family: 'Open Sans Condensed', sans-serif;
 `;
 
 export const UtilityCalendar = styled.div`
@@ -41,6 +42,7 @@ export const UtilityCalendar = styled.div`
 export const UtilityTitle = styled.h3`
   color: white;
   margin-left: 8px;
+  font-family: 'Open Sans Condensed', sans-serif;
 `;
 
 export const UtilityLogoContainer = styled.div`
@@ -61,6 +63,7 @@ export const UtilityWindowClose = styled.div`
   color: white;
   font-weight: bolder;
   font-size: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
 `;
 
 export const UtilityWindowEdit = styled.div`
@@ -71,6 +74,7 @@ export const UtilityWindowEdit = styled.div`
   color: white;
   font-weight: bolder;
   font-size: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
 `;
 
 export const UtilityItemHLine = styled.div`
@@ -88,19 +92,17 @@ export const UtilityItemIndexPeriodLegend = styled.div`
 `;
 
 export const UtilityItemIndexPeriodLegendColor = styled.div`
-  height: 30px;
+  height: 15px;
   width: 30px;
   display: flex;
-  //border: 1px solid #5DB1B9;
-  border-radius: 300px;
   background-color: #5DB1B9;
-  //box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   align-content: center;
 `;
 
 export const UtilityItemIndexPeriodLegendTitle= styled.h3`
   color: #878C96;
   padding-left: 5px;
+  font-family: 'Open Sans Condensed', sans-serif;
 `;
 
 export const UtilityItemPaymentDeadlineLegend = styled.div`
@@ -113,11 +115,9 @@ height: 8px;
 `;
 
 export const UtilityItemPaymentDeadlineLegendColor = styled.div`
-  height: 30px;
+  height: 15px;
   width: 30px;
   display: flex;
-  //border: 1px solid white;
-  border-radius: 300px;
   background-color: #EC0016;
   //box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   align-content: center;
@@ -126,6 +126,28 @@ export const UtilityItemPaymentDeadlineLegendColor = styled.div`
 export const UtilityItemPaymentDeadlineLegendTitle= styled.h3`
   color: #878C96;
   padding-left: 5px;
+  font-family: 'Open Sans Condensed', sans-serif;
+`;
+
+export const UtilityInvoiceDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 8px;
+`;
+
+export const UtilityItemClientCode = styled.h2`
+  display: flex;
+  color:#878C96;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 16px;
+  margin-right: 5px;
+`;
+export const UtilityItemAddress = styled.h2`
+display: flex;
+  color:#878C96;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 16px;
 `;
 
 

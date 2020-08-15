@@ -1,6 +1,6 @@
 const DrawerActionTypes = {
-    DRAWER_HIDDEN:'DRAWER_HIDDEN',
-    DRAWER_VISIBLE:'DRAWER_VISIBLE'
+    TOGGLE_DRAWER:'TOGGLE_DRAWER',
+    CLOSE_DRAWER:'CLOSE_DRAWER'
 };
 
 export default DrawerActionTypes;

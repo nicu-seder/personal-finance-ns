@@ -2,12 +2,12 @@ import DrawerActionTypes from "./drawer.action.types";
 
 export const closeDrawer = ()=>{
     return {
-        type:DrawerActionTypes.DRAWER_HIDDEN
+        type:DrawerActionTypes.CLOSE_DRAWER
     }
 };
 
-export const openDrawer = ()=>{
+export const toggleDrawer = ()=>{
     return {
-        type:DrawerActionTypes.DRAWER_VISIBLE
+        type:DrawerActionTypes.TOGGLE_DRAWER
     }
 };

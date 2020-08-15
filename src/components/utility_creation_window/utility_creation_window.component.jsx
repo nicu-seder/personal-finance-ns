@@ -20,13 +20,21 @@ import {createUtility} from "../../firebase/firebase.utils";
 
 //Import components
 import CustomButton from "../custom-button/custom-button.component";
+import FormDropdown from "../form_dropdown/form-dropdown.component";
 
 //Import from reselect
 import {selectCurrentUser} from "../../redux/user/user.selectors";
 
 const UtilityCreationWindow = ({toggleOffUtilityForm, currentUser}) => {
-    const [utilityDetails, setUtilityDetails] = useState({utilityName: '', utilityIndexDays: '', utilityPaymentDeadline:''});
-    const {utilityName, utilityIndexDays, utilityPaymentDeadline} = utilityDetails;
+    const [utilityDetails, setUtilityDetails] = useState({
+        utilityName: '',
+        utilityPaymentDeadline: '',
+        utilityClientCode: '',
+        utilityAddress: '',
+        utilityIndexStartDate: 1,
+        utilityIndexEndDate: 31
+    });
+    const {utilityName, utilityPaymentDeadline, utilityIndexStartDate, utilityIndexEndDate, utilityAddress, utilityClientCode} = utilityDetails;
     const {uid} = currentUser;
 
     const handleChange = (event) => {
@@ -35,7 +43,7 @@ const UtilityCreationWindow = ({toggleOffUtilityForm, currentUser}) => {
     };
 
     const registerUtility = () => {
-        createUtility(uid,utilityName, utilityIndexDays, utilityPaymentDeadline);
+        createUtility(uid, utilityName, utilityIndexStartDate, utilityIndexEndDate, utilityPaymentDeadline, utilityClientCode, utilityAddress);
         toggleOffUtilityForm();
     };
 
@@ -50,25 +58,47 @@ const UtilityCreationWindow = ({toggleOffUtilityForm, currentUser}) => {
                     name={'utilityName'}
                     value={utilityName}
                     type={'text'}
-                    label={'Utility Name'}
+                    label={'Utility name'}
                     required
                     handleChange={handleChange}
                 />
                 <FormInput
-                    name={'utilityIndexDays'}
-                    value={utilityIndexDays}
+                    name={'utilityClientCode'}
+                    value={utilityClientCode}
                     type={'text'}
-                    label={'Utility index period'}
+                    label={'Client code'}
                     required
                     handleChange={handleChange}
                 />
                 <FormInput
+                    name={'utilityAddress'}
+                    value={utilityAddress}
+                    type={'text'}
+                    label={'Utility address'}
+                    required
+                    handleChange={handleChange}
+                />
+                <FormDropdown
+                    name={'utilityIndexStartDate'}
+                    displayName={'Index start day'}
+                    handleChange={handleChange}
+                    required
+                    defaultValue={1}
+                />
+                <FormDropdown
+                    name={'utilityIndexEndDate'}
+                    displayName={'Index end day'}
+                    handleChange={handleChange}
+                    required
+                    defaultValue={31}
+                />
+                <FormDropdown
                     name={'utilityPaymentDeadline'}
-                    value={utilityPaymentDeadline}
-                    type={'text'}
-                    label={'Payment deadline'}
-                    required
+                    displayName={'Invoice deadline'}
                     handleChange={handleChange}
+                    required
+                    defaultValue={1}
+                    isRed={true}
                 />
             </UtilityFormContainer>
             <CustomButton onClick={registerUtility}>Create</CustomButton>
@@ -78,7 +108,7 @@ const UtilityCreationWindow = ({toggleOffUtilityForm, currentUser}) => {
 
 const mapStateToProps = createStructuredSelector(
     {
-        currentUser:selectCurrentUser
+        currentUser: selectCurrentUser
     }
 );
 

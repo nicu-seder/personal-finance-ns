@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 import {connect} from 'react-redux';
 import {createStructuredSelector} from "reselect";
@@ -8,7 +8,7 @@ import {selectUtilityFormStatus, selectUtilityList} from "../../redux/utility/ut
 import {UtilitiesPageContainer, UtilitiesPageItems} from "./utilities_page.styles";
 
 //Import components
-import AddUtilities from "../../components/add_utility/add_utility.component";
+import AddUtilities from "../../components/add_item_button/add_utility.component";
 import UtilityCreationWindow from "../../components/utility_creation_window/utility_creation_window.component";
 import Utility from "../../components/utility_item/utility_item.component";
 
@@ -23,14 +23,22 @@ import {isSelectedUtilities} from "../../redux/selected_pages/selected_pages.act
 //Import from reselect
 import {selectCurrentUser} from "../../redux/user/user.selectors";
 
+//Impor HOC
+import Spinner from "../../components/with-spinner/with-spinner.component";
+
+
 const UtilitiesPage = ({utilityFormStatus, utilities, currentUser, updateUtilities, selectUtilitiesPage}) => {
+    const [utilitiesState, setUtilitiesState] = useState({isLoading: true});
+    const {isLoading} = utilitiesState;
+
     useEffect(() => {
         const collectionRef = db.collection(`documents/${currentUser.uid}/utilities`);
         collectionRef.onSnapshot(async snapshot => {
             const transformedData = transformUtilities(snapshot);
-            updateUtilities(transformedData);
+            await updateUtilities(transformedData);
+            setUtilitiesState({isLoading: false});
         });
-        selectUtilitiesPage('Utilitati');
+        selectUtilitiesPage('Home Utilities');
     }, [updateUtilities, currentUser, selectUtilitiesPage]);
 
     return (
@@ -38,12 +46,15 @@ const UtilitiesPage = ({utilityFormStatus, utilities, currentUser, updateUtiliti
             <AddUtilities/>
             <UtilitiesPageItems>
                 {
-                    utilities ? utilities.map(utility => {
+
+                    isLoading ? <Spinner/> : utilities.map(utility => {
                         return <Utility key={utility.utility_name}
                                         utility_name={utility.utility_name}
+                                        utility_client_code={utility.utility_client_code}
+                                        utility_address={utility.utility_address}
                                         utility_index_period={utility.utility_index_period_array}
                                         utility_payment_deadline={utility.utility_deadline}/>
-                    }) : null
+                    })
                 }
             </UtilitiesPageItems>
 

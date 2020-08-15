@@ -14,6 +14,13 @@ export const isSelectedDebts= (title)=>{
     }
 };
 
+export const isSelectedExpenses= (title)=>{
+    return {
+        type:SelectedPagesActionTypes.EXPENSES_SELECTED,
+        payload:title
+    }
+};
+
 export const isSelectedMainMenu= (title)=>{
     return {
         type:SelectedPagesActionTypes.MAIN_MENU_SELECTED,

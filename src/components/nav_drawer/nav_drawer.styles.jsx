@@ -1,6 +1,7 @@
 import styled, {css, keyframes} from "styled-components";
 import {ReactComponent as UtilitiesSvg} from "../../assets/utilities.svg";
-import {ReactComponent as DebtsSvg} from "../../assets/debt.svg";
+import {ReactComponent as DebtsSvg} from "../../assets/money.svg";
+import {ReactComponent as ExpensesSvg} from "../../assets/credit-card.svg";
 
 const fadeInLeft = keyframes`
   from {
@@ -48,7 +49,7 @@ export const NavDrawerContainer = styled.div`
     box-shadow: 0px 5px 5px 0px #646973;
     background-color:white;
     border-radius: 5px;
-    ${props => props.closed ? fadeOutCss : fadeInCss}
+    ${props => props.closed ? fadeInCss : fadeOutCss}
 `;
 
 export const NavDrawerCloseButton = styled.div`
@@ -66,7 +67,7 @@ export const NavDrawerOption = styled.div`
   height: 50px;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 15px;
@@ -88,20 +89,28 @@ export const NavDrawerUtilitiesLogo = styled(UtilitiesSvg)`
 `;
 
 export const NavDrawerDebtsLogo = styled(DebtsSvg)`
-  width: 94%;
+  width: 100%;
+  height: 38px;
+  cursor: pointer;
+`;
+
+export const NavDrawerExpensesLogo = styled(ExpensesSvg)`
+  width: 100%;
   height: 38px;
   cursor: pointer;
 `;
 
 export const NavDrawerUtilitiesVerticalLine = styled.div`
-  height: 100%;
-  width: 6%;
+  margin-top: 5px;
+  height: 2px;
+  width: 90%;
   ${props => props.utilitiesPageSelected ? pageSelected : pageNotSelected}
 `;
 
 export const NavDrawerDebtsVerticalLine = styled.div`
-  height: 100%;
-  width: 6%;
+  margin-top: 5px;
+  height: 2px;
+  width: 90%;
   ${props => props.debtsPageSelected ? pageSelected : pageNotSelected}
 `;
 

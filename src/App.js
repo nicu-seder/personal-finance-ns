@@ -12,6 +12,7 @@ import MainMenuPage from "./pages/main_menu_page/main_menu_page.component";
 import DebtPage from "./pages/debt_page/debt.component";
 import UtilitiesPage from "./pages/utilities_page/utilities_page.component";
 import NavDrawer from "./components/nav_drawer/nav_drawer.component";
+import ExpensesPage from "./pages/expenses_page/expenses_page.component";
 
 //Import from firebase
 import {auth, createUserProfile} from "./firebase/firebase.utils";
@@ -43,8 +44,9 @@ const App = ({currentUser, setCurrentUser}) => {
             <NavDrawer/>
             <Switch>
                 <Route path={'/signin'} render={() => currentUser ? <Redirect to={'/'}/> : <SignIn/>}/>
-                <Route path={'/utilities_page'} component={UtilitiesPage}/>
+                <Route path={'/utilities_page'} render={()=><UtilitiesPage crtUser={currentUser}/>}/>
                 <Route path={'/debts_page'} component={DebtPage}/>
+                <Route path={'/expenses_page'} component={ExpensesPage}/>
                 <Route path={'/signup'} render={() => currentUser ? <Redirect to={'/'}/> : <SignUp/>}/>
                 <Route path={'/'} render={() => currentUser ? <MainMenuPage/> : <WelcomePage/>}/>
             </Switch>

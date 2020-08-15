@@ -1,20 +1,20 @@
 import DrawerActionTypes from "./drawer.action.types";
 
 const INITIAL_STATE = {
-    drawerClosed: true
+    drawerState: false
 };
 
 const drawerReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case DrawerActionTypes.DRAWER_VISIBLE:
+        case DrawerActionTypes.TOGGLE_DRAWER:
+            return {
+                ...state,
+                drawerClosed: !state.drawerClosed
+            };
+        case DrawerActionTypes.CLOSE_DRAWER:
             return {
                 ...state,
                 drawerClosed: false
-            };
-        case DrawerActionTypes.DRAWER_HIDDEN:
-            return {
-                ...state,
-                drawerClosed: true
             };
         default:
             return {

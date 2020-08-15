@@ -29,14 +29,14 @@ import {connect} from 'react-redux';
 //import components
 
 //import actions
-import {openDrawer} from "../../redux/drawer/drawer.action.creator";
+import {toggleDrawer} from "../../redux/drawer/drawer.action.creator";
 
 
-const Header = ({currentUser, openDrawer, pageTitle}) => {
+const Header = ({currentUser, toggleDrawer, pageTitle}) => {
     return (
         <HeaderContainer>
             <IconsContainer>
-                <MenuIcon onClick={openDrawer}/>
+                <MenuIcon onClick={toggleDrawer}/>
                 <LogoContainer to={'/'}>
                     <HeaderLogo src={leaf_logo}/>
                 </LogoContainer>
@@ -63,7 +63,7 @@ const mapStateToProps = createStructuredSelector(
 
 const mapDispatchToProps = dispatch=>{
     return {
-        openDrawer:()=>dispatch(openDrawer())
+        toggleDrawer:()=>dispatch(toggleDrawer())
     }
 };
 

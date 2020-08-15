@@ -27,9 +27,10 @@ export const HeaderLogo = styled.img`
 `;
 
 export const HeaderTitle = styled.div`
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
   color: white;
   font-size: 25px;
+  font-weight: bold;
 `;
 
 export const OptionsContainer = styled.div`

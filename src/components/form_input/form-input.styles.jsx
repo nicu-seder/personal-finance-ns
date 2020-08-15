@@ -9,7 +9,8 @@ export const FormInputContainer = styled.div`
 export const FormInputText = styled.p`
     color:#878C96;
     margin: 0;
-    font-size: 12px;
+    font-size: 15px;
+    font-family: 'Open Sans Condensed', sans-serif;
 `;
 
 export const FormInputArea = styled.input`
@@ -22,4 +23,6 @@ export const FormInputArea = styled.input`
     height: 30px;
     width:100%;
     font-weight: bold;
+    font-size: 15px;
+    font-family: 'Open Sans Condensed', sans-serif;
 `;
