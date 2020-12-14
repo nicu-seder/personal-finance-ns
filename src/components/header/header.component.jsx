@@ -36,7 +36,9 @@ const Header = ({currentUser, toggleDrawer, pageTitle}) => {
     return (
         <HeaderContainer>
             <IconsContainer>
-                <MenuIcon onClick={toggleDrawer}/>
+                {
+                    currentUser?<MenuIcon onClick={toggleDrawer}/>:null
+                }
                 <LogoContainer to={'/'}>
                     <HeaderLogo src={leaf_logo}/>
                 </LogoContainer>

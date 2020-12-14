@@ -28,11 +28,12 @@ export const UtilityIndexDayContainer = styled.div`
   display: flex;
   align-items: center;
   align-content: center;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   border-radius: 300px;
   font-size: 26px;
   font-weight: bold;
+  margin: 1px;
   ${getDayStyle}
 `;
 
@@ -41,6 +42,6 @@ export const UtilityIndexDayValue =  styled.div`
   height: 100%;
   align-self: center;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 4px;
   font-family: 'Open Sans Condensed', sans-serif;
 `;

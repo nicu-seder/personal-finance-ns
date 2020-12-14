@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const UtilitiesPageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  //flex-wrap: wrap;
   position: relative;
   align-content: center;
 `;

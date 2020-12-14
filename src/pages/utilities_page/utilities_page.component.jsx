@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from "reselect";
 import {selectUtilityFormStatus, selectUtilityList} from "../../redux/utility/utility.selectors";
 
-//Impprt styles
+//Import styles
 import {UtilitiesPageContainer, UtilitiesPageItems} from "./utilities_page.styles";
 
 //Import components
@@ -23,7 +23,7 @@ import {isSelectedUtilities} from "../../redux/selected_pages/selected_pages.act
 //Import from reselect
 import {selectCurrentUser} from "../../redux/user/user.selectors";
 
-//Impor HOC
+//Import HOC
 import Spinner from "../../components/with-spinner/with-spinner.component";
 
 

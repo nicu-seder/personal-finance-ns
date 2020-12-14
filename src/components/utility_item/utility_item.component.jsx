@@ -15,17 +15,12 @@ import {
     UtilityTitle,
     UtilityWindowClose,
     UtilityItemHLine,
-    UtilityItemIndexPeriodLegend,
-    UtilityItemPaymentDeadlineLegend,
-    UtilityItemIndexPeriodLegendColor,
-    UtilityItemPaymentDeadlineLegendColor,
-    UtilityItemIndexPeriodLegendTitle,
-    UtilityItemPaymentDeadlineLegendTitle,
     UtilityWindowEdit,
     UtilityCloseEdit,
     UtilityItemClientCode,
-    UtilityItemAddress,
-    UtilityInvoiceDetails
+    UtilityInvoiceDetails,
+    UtilityInformationContainer,
+    UtilityItemVLine, UtilityItemClientInfoContainer, UtilityItemClientInfoTitle
 } from "./utility_item.styles";
 
 //Import components
@@ -46,34 +41,33 @@ const Utility = ({utility_name, currentUser, utility_index_period, utility_payme
                         onClick={() => deleteUtility(currentUser.uid, utility_name)}>&#10005;</UtilityWindowClose>
                 </UtilityCloseEdit>
             </UtilityDetails>
-            <UtilityCalendar>
-                {
-                    list_of_days.map((value, index) => {
-                        return <UtilityIndexDay key={index} day_number={value} index_days={utility_index_period}
-                                                payment_deadline={utility_payment_deadline}/>
-                    })
-                }
-            </UtilityCalendar>
             <UtilityItemHLine/>
+            <UtilityInformationContainer>
+                <UtilityCalendar>
+                    {
+                        list_of_days.map((value, index) => {
+                            return <UtilityIndexDay key={index} day_number={value} index_days={utility_index_period}
+                                                    payment_deadline={utility_payment_deadline}/>
+                        })
+                    }
+                </UtilityCalendar>
+                <UtilityItemVLine/>
+                <UtilityInvoiceDetails>
+                    <UtilityItemClientInfoContainer>
+                        <UtilityItemClientInfoTitle>Client code</UtilityItemClientInfoTitle>
+                        <UtilityItemClientCode>
+                            {utility_client_code}
+                        </UtilityItemClientCode>
+                    </UtilityItemClientInfoContainer>
 
-            <UtilityItemIndexPeriodLegend>
-                <UtilityItemIndexPeriodLegendColor/>
-                <UtilityItemIndexPeriodLegendTitle>Index Period</UtilityItemIndexPeriodLegendTitle>
-            </UtilityItemIndexPeriodLegend>
-            <UtilityItemPaymentDeadlineLegend>
-                <UtilityItemPaymentDeadlineLegendColor/>
-                <UtilityItemPaymentDeadlineLegendTitle>Payment Deadline</UtilityItemPaymentDeadlineLegendTitle>
-            </UtilityItemPaymentDeadlineLegend>
-            <UtilityItemHLine/>
-            <UtilityInvoiceDetails>
-                <UtilityItemClientCode>
-                    {`Client code: ${utility_client_code}`}
-                </UtilityItemClientCode>
-                <UtilityItemAddress>
-                    {`Invoice address: ${utility_address}`}
-                </UtilityItemAddress>
-            </UtilityInvoiceDetails>
-
+                    <UtilityItemClientInfoContainer>
+                        <UtilityItemClientInfoTitle>Invoice address</UtilityItemClientInfoTitle>
+                        <UtilityItemClientCode>
+                            {utility_address}
+                        </UtilityItemClientCode>
+                    </UtilityItemClientInfoContainer>
+                </UtilityInvoiceDetails>
+            </UtilityInformationContainer>
         </UtilityContainer>
     )
 };

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {ReactComponent as UserLogo} from "./../../assets/user.svg";
 import {ReactComponent as AddSign} from "./../../assets/plus.svg";
+import {ReactComponent as TransactionIcon} from "./../../assets/credit_card.svg";
 
 export const ExpensesPageContainer = styled.div`
   display: flex;
@@ -49,6 +50,14 @@ export const ExpensesAddIncomeLogo = styled(AddSign)`
   cursor: pointer;
 `;
 
+export const TransactionAddLogo = styled(AddSign)`
+  height: 25px;
+  width: 25px;
+  margin-right: 50px;
+  cursor: pointer;
+  margin-top: 25px;
+`;
+
 export const ExpensesIncomeContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -85,15 +94,35 @@ export const ExpensesGridContainer = styled.div`
 `;
 
 
-
-
 export const ExpensesTransactionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 50%;
   height: 95%; 
   background-color: #f1f3f6;;
   border-radius: 10px;
   margin-right: 20px;
+`;
+
+export const ExpensesTransactionLogo = styled(TransactionIcon)`
+  width: 100%;
+  height: 250px;
+  margin-top: 15px;
+`;
+
+export const ExpensesTransactionTitle = styled.div`
+  display: flex;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 28px;
+  color: #646973 ;
+  margin-top: 20px;
+  margin-left: 20px;
+`;
+
+export const ExpensesTransactionDetails = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;

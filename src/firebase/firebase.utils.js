@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
+
 const config = {
     apiKey: "AIzaSyDh3t5ocXomo-AX81mG8ot5FOtXNzXYvk4",
     authDomain: "bills-money.firebaseapp.com",
@@ -53,7 +54,7 @@ export const createUserProfile = async (userAuth, additionalData) => {
             console.log(e)
         }
     } else {
-        console.log("User profile already exists");
+        // console.log("User profile already exists");
     }
     return userDocRef;
 };
@@ -163,6 +164,27 @@ export const createExpenseCategory = async (current_user_uid, expense_category_n
 
 };
 
+export const createTransaction = async (current_user_uid, transaction_name, transaction_value, transaction_description, expense_category_name) => {
+    // const moment_date = moment(new Date()).format('YYYY-MM-DD');
+    const transactionDocRef = db.doc(`documents/${current_user_uid}/expenses/${expense_category_name}/${expense_category_name}/${transaction_name}`);
+    const transactionDocSnapshot = await transactionDocRef.get();
+    if (!transactionDocSnapshot.exists) {
+        const createdAt = new Date();
+        try {
+            await transactionDocRef.set(
+                {
+                    transaction_name,
+                    transaction_description,
+                    transaction_value,
+                    createdAt
+                }
+            )
+        } catch (e) {
+            console.log(e);
+        }
+    }
+};
+
 export const getAllUtilities = (current_user_uid) => {
     const list_of_utilities = [];
     const collectionRef = db.collection(`documents/${current_user_uid}/utilities`);
@@ -220,17 +242,35 @@ export const deleteDebt = (current_user_uid, debt_name) => {
 
 };
 
+export const deleteExpenseCategory = (current_user_uid, expense_category_name)=>{
+    const docRef = db.collection('documents').doc(`${current_user_uid}`).collection('expenses').doc(`${expense_category_name}`);
+    docRef.delete().then(()=>{
+        console.log('Doc successfully deleted');
+    }).catch(error=>{
+        console.error('Error removing document: ', error);
+    })
+};
+
 
 export const selectDebtFirestore = (current_user_uid, debt_name) => {
     const collectionRef = db.collection(`documents/${current_user_uid}/debts`);
     collectionRef.get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
-            // console.log(doc.data().debt_name);
-
             if (doc.data().debt_name === debt_name) {
-                const docRef = db.collection('documents').doc(`${current_user_uid}`).collection('debts').doc(`${debt_name}`);
-                docRef.update({
-                    is_selected: !doc.data().is_selected
+                // const docRef = db.collection('documents').doc(`${current_user_uid}`).collection('debts').doc(`${debt_name}`);
+                // docRef.update({
+                //     is_selected: !doc.data().is_selected
+                // })
+                collectionRef.doc(doc.data().debt_name).update({
+                    is_selected: true
+                }).then(() => {
+                    console.log("Debt successfully selected")
+                }).catch(e => {
+                    console.log('Could not select the debt')
+                })
+            } else {
+                collectionRef.doc(doc.data().debt_name).update({
+                    is_selected: false
                 })
             }
         })
@@ -247,10 +287,10 @@ export const selectExpenseCategoryFirestore = (current_user_uid, expense_categor
                         expense_category_selected: true
                     }
                 ).then(() => {
-                    console.log('Success');
+
                 }).catch(e => {
                     console.log('Couldnt select the expense category');
-                })
+                });
             } else {
                 collectionRef.doc(doc.data().expense_category_name).update(
                     {
@@ -261,3 +301,14 @@ export const selectExpenseCategoryFirestore = (current_user_uid, expense_categor
         })
     });
 };
+
+export const getSelectedExpenseCategoryName = (current_user_uid) => {
+    const collectionRef = db.collection(`documents/${current_user_uid}/expenses`);
+    collectionRef.where("expense_category_selected","==",true).get().then(querySnapshot => {
+
+    }).catch(e=>{
+        console.log(e);
+    });
+};
+
+

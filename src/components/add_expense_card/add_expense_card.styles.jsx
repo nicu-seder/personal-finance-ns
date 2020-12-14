@@ -5,7 +5,7 @@ import {ReactComponent as AddExpenseLogo} from "./../../assets/plus.svg";
 export const AddExpenseCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 80px;
+  height: 90px;
   width: 80px;
   align-items: center;
   margin-top: 28px;

@@ -11,22 +11,30 @@ import {
     ExpenseCardLogo,
     ExpenseCardRectangle,
     ExpenseCardTitle,
-    ExpenseCardHLineSelected
+    ExpenseCardHLineSelected,
+    ExpenseCardCloseContainer, ExpenseCardCloseSymbol
 } from "./expense-card.styles";
 
 //import firebase
-import {selectExpenseCategoryFirestore} from "../../firebase/firebase.utils";
+import {selectExpenseCategoryFirestore, deleteExpenseCategory} from "../../firebase/firebase.utils";
 
-const ExpenseCard = ({title, color, is_selected, currentUser}) => {
+//import actions
+import {selectExpenseCategoryName} from "../../redux/expense/expenses.action.creator";
+
+const ExpenseCard = ({title, color, is_selected, currentUser, selectExpenseCategoryName}) => {
     const {uid} = currentUser;
 
     const selectExpenseCategory = () => {
         selectExpenseCategoryFirestore(uid, title);
+        selectExpenseCategoryName(title);
     };
 
     return (
-        <ExpenseCardContainer onClick={selectExpenseCategory}>
-            <ExpenseCardRectangle color={color}>
+        <ExpenseCardContainer >
+            <ExpenseCardCloseContainer>
+                <ExpenseCardCloseSymbol onClick={()=>deleteExpenseCategory(uid, title)}>&#10005;</ExpenseCardCloseSymbol>
+            </ExpenseCardCloseContainer>
+            <ExpenseCardRectangle color={color} onClick={selectExpenseCategory}>
                 <ExpenseCardLogo/>
             </ExpenseCardRectangle>
             <ExpenseCardTitle>{title}</ExpenseCardTitle>
@@ -43,4 +51,10 @@ const mapStateToProps = createStructuredSelector(
     }
 );
 
-export default connect(mapStateToProps, null)(ExpenseCard);
+const mapDispatchToProps = dispatch=>{
+    return{
+        selectExpenseCategoryName:(expenseCategoryTitle)=>dispatch(selectExpenseCategoryName(expenseCategoryTitle))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseCard);

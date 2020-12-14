@@ -2,15 +2,16 @@ import styled from "styled-components";
 import {ReactComponent as Logo} from "./../../assets/engie.svg";
 
 export const UtilityContainer = styled.div`
-  width: 400px;
-  height: 480px;
+  width: 590px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   flex-flow: wrap;
   margin: 30px;
-  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  //border: 1px solid cadetblue;
-  border-radius: 10px 10px 0px 0px;
+  //box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  background-color: #fbfdff;
+  border-bottom: 1px solid #99C8CE ;
+  border-radius: 10px 10px 5px 5px;
 `;
 
 export const UtilityDetails = styled.div`
@@ -18,10 +19,10 @@ export const UtilityDetails = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #167D86;
+  background-color: #fbfdff;
   width: 100%;
-  height: 60px;
-  border-radius: 5px 5px 0px 0px;
+  //height: 40px;
+  //border-radius: 5px 5px 0px 0px;
 `;
 
 export const UtilityCloseEdit = styled.div`
@@ -29,19 +30,23 @@ export const UtilityCloseEdit = styled.div`
   flex-direction: row;
   justify-content: end;
   font-family: 'Open Sans Condensed', sans-serif;
+  &:hover{
+  
+  }
 `;
 
 export const UtilityCalendar = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  //justify-content: space-between;
   flex-wrap: wrap;
   padding: 5px;
 `;
 
-export const UtilityTitle = styled.h3`
-  color: white;
+export const UtilityTitle = styled.div`
+  color: #167D86;
   margin-left: 8px;
+  font-size: 20px;
   font-family: 'Open Sans Condensed', sans-serif;
 `;
 
@@ -60,9 +65,8 @@ export const UtilityWindowClose = styled.div`
   cursor: pointer;
   margin-right: 10px;
   margin-top: 5px;
-  color: white;
-  font-weight: bolder;
-  font-size: 20px;
+  color: #167D86 ;
+    font-size: 20px;
   font-family: 'Open Sans Condensed', sans-serif;
 `;
 
@@ -71,15 +75,19 @@ export const UtilityWindowEdit = styled.div`
   cursor: pointer;
   margin-right: 10px;
   margin-top: 5px;
-  color: white;
-  font-weight: bolder;
+  color: #167D86;
   font-size: 20px;
   font-family: 'Open Sans Condensed', sans-serif;
 `;
 
 export const UtilityItemHLine = styled.div`
-  border-top: 1px solid #D7DCE1;
+  border-top: 1px solid #ff69b4;
   width: 100%;
+`;
+export const UtilityItemVLine = styled.div`
+  border-right: 1px solid #D7DCE1  ;
+  height: 55%;
+  margin-right: 15px;
 `;
 
 export const UtilityItemIndexPeriodLegend = styled.div`
@@ -133,20 +141,39 @@ export const UtilityInvoiceDetails = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-left: 8px;
+    margin-left: 8px;
 `;
 
-export const UtilityItemClientCode = styled.h2`
+export const UtilityItemClientCode = styled.div`
   display: flex;
   color:#878C96;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 16px;
   margin-right: 5px;
 `;
-export const UtilityItemAddress = styled.h2`
-display: flex;
+
+export const UtilityItemAddress = styled.div`
+  display: flex;
   color:#878C96;
   font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 16px;
+`;
+
+export const UtilityInformationContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const UtilityItemClientInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const UtilityItemClientInfoTitle = styled.div`
+  color:#878C96;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
   font-size: 16px;
 `;
 
